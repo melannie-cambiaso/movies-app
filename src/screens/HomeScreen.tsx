@@ -9,7 +9,7 @@ import { useMovies } from '../hooks/useMovies';
 const { width } = Dimensions.get('window');
 
 const HomeScreen = () => {
-  const { nowPlaying, isLoading } = useMovies();
+  const { nowPlaying, popularMovies, isLoading } = useMovies();
   const { top } = useSafeAreaInsets();
 
   if (isLoading) {
@@ -33,7 +33,7 @@ const HomeScreen = () => {
         </View>
         {/* Popular movies */}
 
-        <HorizontalSlider title="Populares" movies={nowPlaying} />
+        <HorizontalSlider title="Populares" movies={popularMovies} />
 
         {/* Popular movies */}
       </View>
