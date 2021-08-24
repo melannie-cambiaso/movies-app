@@ -1,5 +1,6 @@
+import { CommonActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Movies } from '../interfaces/movie';
 
 interface Props {
@@ -19,22 +20,40 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     borderRadius: 18,
-    elevation: 5
+    elevation: 5,
+    backgroundColor: '#C9C9C9'
   },
   image: {
     flex: 1,
-    borderRadius: 18
+    borderRadius: 18,
+    backgroundColor: '#C9C9C9'
   }
 });
 
 const MoviePoster = ({ movie, width = 300, height = 420 }: Props) => {
+  const navigator = useNavigation();
+
+  const onPress = () => {
+    navigator.dispatch(
+      CommonActions.navigate({ name: 'Detail', params: movie })
+    );
+  };
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
-    <View style={{ width, height, marginHorizontal: 8 }}>
-      <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri }} />
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={{
+          width,
+          height,
+          marginHorizontal: 8,
+          backgroundColor: '#C9C9C9',
+          borderRadius: 18
+        }}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{ uri }} />
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
