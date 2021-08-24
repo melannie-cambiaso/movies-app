@@ -1,0 +1,33 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "node_modules": true
+    },
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#9a329d",
+      "statusBar.foreground": "#ffffff"
+    },
+    "dateTime.showDayOfMonth": true,
+    "dateTime.showDayOfWeek": true,
+    "dateTime.showMonth": true,
+    "dateTime.padDays": true,
+    "cSpell.language": "en,es",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  }
+}
