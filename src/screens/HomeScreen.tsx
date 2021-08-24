@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, FlatList, ScrollView } from 'react-native';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
@@ -20,17 +20,48 @@ const HomeScreen = () => {
     );
   }
   return (
-    <View style={{ marginTop: top + 20 }}>
-      {/* <MoviePoster movie={nowPlaying[0]} /> */}
-      <View style={{ height: 440 }}>
-        <Carousel
-          data={nowPlaying}
-          renderItem={({ item }) => <MoviePoster movie={item} />}
-          sliderWidth={width}
-          itemWidth={300}
-        />
+    <ScrollView>
+      <View style={{ flex: 1, marginTop: top + 20 }}>
+        {/* Principal carousel */}
+        <View style={{ height: 440 }}>
+          <Carousel
+            data={nowPlaying}
+            renderItem={({ item }) => <MoviePoster movie={item} />}
+            sliderWidth={width}
+            itemWidth={300}
+          />
+        </View>
+        {/* Popular movies */}
+
+        <View style={{ height: 250 }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Populares</Text>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={({ id }) => id.toString()}
+            data={nowPlaying}
+            renderItem={({ item }) => (
+              <MoviePoster width={140} height={200} movie={item} />
+            )}
+          />
+        </View>
+
+        {/* Popular movies */}
+
+        <View style={{ height: 250 }}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Populares</Text>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={({ id }) => id.toString()}
+            data={nowPlaying}
+            renderItem={({ item }) => (
+              <MoviePoster width={140} height={200} movie={item} />
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
