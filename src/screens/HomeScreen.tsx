@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import movieDB from '../api/movieDB';
+import { MovieDBNowPlaying } from '../interfaces/movie';
 
 const HomeScreen = () => {
   useEffect(() => {
-    movieDB.get('/now_playing').then(resp => console.log(resp.data));
+    movieDB
+      .get<MovieDBNowPlaying>('/now_playing')
+      .then(resp => console.log(resp.data));
   }, []);
 
   return (
