@@ -30,8 +30,6 @@ const styles = StyleSheet.create({
 });
 
 export const MoviePoster = ({ movie }: Props) => {
-  console.log(movie);
-
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <View style={styles.container}>
