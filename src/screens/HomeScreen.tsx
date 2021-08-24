@@ -3,7 +3,7 @@ import { Dimensions, FlatList, ScrollView } from 'react-native';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
-import { MoviePoster } from '../components/MoviePoster';
+import { HorizontalSlider, MoviePoster } from '../components';
 import { useMovies } from '../hooks/useMovies';
 
 const { width } = Dimensions.get('window');
@@ -33,33 +33,9 @@ const HomeScreen = () => {
         </View>
         {/* Popular movies */}
 
-        <View style={{ height: 250 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Populares</Text>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={({ id }) => id.toString()}
-            data={nowPlaying}
-            renderItem={({ item }) => (
-              <MoviePoster width={140} height={200} movie={item} />
-            )}
-          />
-        </View>
+        <HorizontalSlider title="Populares" movies={nowPlaying} />
 
         {/* Popular movies */}
-
-        <View style={{ height: 250 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Populares</Text>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={({ id }) => id.toString()}
-            data={nowPlaying}
-            renderItem={({ item }) => (
-              <MoviePoster width={140} height={200} movie={item} />
-            )}
-          />
-        </View>
       </View>
     </ScrollView>
   );
