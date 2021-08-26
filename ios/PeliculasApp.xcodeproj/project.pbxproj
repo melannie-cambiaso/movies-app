@@ -44,6 +44,7 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-PeliculasApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeliculasApp.debug.xcconfig"; path = "Target Support Files/Pods-PeliculasApp/Pods-PeliculasApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-PeliculasApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeliculasApp.release.xcconfig"; path = "Target Support Files/Pods-PeliculasApp/Pods-PeliculasApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F2DDC6B026D827BE00251A83 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F2DDC6AF26D8279600251A83 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* PeliculasApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PeliculasAppTests */,
@@ -145,8 +147,15 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-PeliculasApp-PeliculasAppTests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-PeliculasApp-PeliculasAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F2DDC6AF26D8279600251A83 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F2DDC6B026D827BE00251A83 /* Ionicons.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -3,6 +3,8 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Dimensions, ScrollView } from 'react-native';
 import { View, Image, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import { RouteStackParams } from '../navigation/Navigation';
 
 const { height } = Dimensions.get('screen');
@@ -14,10 +16,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    overflow: 'hidden',
     height: height * 0.7,
-    borderBottomEndRadius: 25,
-    borderBottomStartRadius: 25,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -26,6 +25,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
+  },
+  imageBorder: {
+    flex: 1,
+    overflow: 'hidden',
+    borderBottomEndRadius: 25,
+    borderBottomStartRadius: 25
   },
   marginContainer: {
     marginHorizontal: 20,
@@ -47,12 +52,18 @@ const DetailScreen = ({ route }: Props) => {
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri }} />
+        <View style={styles.imageBorder}>
+          <Image style={styles.image} source={{ uri }} />
+        </View>
       </View>
 
       <View style={styles.marginContainer}>
         <Text style={styles.subtitle}>{movie.original_title}</Text>
         <Text style={styles.title}>{movie.title}</Text>
+      </View>
+
+      <View style={styles.marginContainer}>
+        <Icon name="star-outline" size={20} color="grey" />
       </View>
     </ScrollView>
   );
