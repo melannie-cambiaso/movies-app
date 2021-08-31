@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { Dimensions, ScrollView } from 'react-native';
 import { View, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import useMovieDetails from '../hooks/useMovieDetails';
 
 import { RouteStackParams } from '../navigation/Navigation';
 
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
 const DetailScreen = ({ route }: Props) => {
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const movieDetails = useMovieDetails(movie.id);
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.imageContainer}>
