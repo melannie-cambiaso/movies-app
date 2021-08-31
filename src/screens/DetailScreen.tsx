@@ -1,9 +1,15 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { ActivityIndicator, Text } from 'react-native';
-import { Dimensions, ScrollView } from 'react-native';
-import { View, Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  ActivityIndicator,
+  Text,
+  Dimensions,
+  ScrollView,
+  View,
+  Image,
+  StyleSheet
+} from 'react-native';
+
 import { MovieDetails } from '../components';
 import useMovieDetails from '../hooks/useMovieDetails';
 
@@ -53,7 +59,7 @@ const DetailScreen = ({ route }: Props) => {
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const { loading, cast, movieFull } = useMovieDetails(movie.id);
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <ScrollView>
       <View style={styles.imageContainer}>
         <View style={styles.imageBorder}>
           <Image style={styles.image} source={{ uri }} />
