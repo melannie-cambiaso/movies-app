@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 const DetailScreen = ({ route }: Props) => {
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const movieDetails = useMovieDetails(movie.id);
+  const { loading, cast, movieFull } = useMovieDetails(movie.id);
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.imageContainer}>
