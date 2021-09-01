@@ -7,8 +7,11 @@ import {
   ScrollView,
   View,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { MovieDetails } from '../components';
 import useMovieDetails from '../hooks/useMovieDetails';
@@ -51,13 +54,19 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     opacity: 0.5
+  },
+  backButton: {
+    position: 'absolute',
+    zIndex: 999,
+    elevation: 10
   }
 });
 
-const DetailScreen = ({ route }: Props) => {
+const DetailScreen = ({ route, navigation }: Props) => {
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const { loading, cast, movieFull } = useMovieDetails(movie.id);
+  const { top } = useSafeAreaInsets();
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
@@ -75,6 +84,12 @@ const DetailScreen = ({ route }: Props) => {
       ) : (
         <MovieDetails movieFull={movieFull!} cast={cast} />
       )}
+
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={[styles.backButton, { top }]}>
+        <Icon size={60} color="white" name="arrow-back" />
+      </TouchableOpacity>
     </ScrollView>
   );
 };
