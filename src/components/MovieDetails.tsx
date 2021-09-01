@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Cast } from '../interfaces/credits';
 import { MovieFull } from '../interfaces/movie';
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     alignContent: 'center',
-    marginTop: 10
+    marginTop: 10,
+    marginHorizontal: 20
   }
 });
 
@@ -23,7 +24,7 @@ const MovieDetails = ({ movieFull, cast }: Props) => {
   return (
     <>
       {/* Detalles */}
-      <View style={{ marginHorizontal: 20 }}>
+      <View>
         <View style={styles.rowContainer}>
           <Icon name="star-outline" size={16} color="grey" />
           <Text style={{ marginLeft: 5 }}>{movieFull.vote_average}</Text>
@@ -33,10 +34,18 @@ const MovieDetails = ({ movieFull, cast }: Props) => {
         </View>
 
         {/* Movie history */}
-        <Text style={{ marginTop: 10, fontSize: 23, fontWeight: 'bold' }}>
+        <Text
+          style={{
+            marginTop: 10,
+            fontSize: 23,
+            fontWeight: 'bold',
+            marginHorizontal: 20
+          }}>
           Historia
         </Text>
-        <Text style={{ fontSize: 16 }}>{movieFull.overview}</Text>
+        <Text style={{ fontSize: 16, marginHorizontal: 20 }}>
+          {movieFull.overview}
+        </Text>
 
         {/* Movie budget */}
         <View style={styles.rowContainer}>
@@ -51,11 +60,24 @@ const MovieDetails = ({ movieFull, cast }: Props) => {
 
         {/* Movie cast  */}
 
-        <View style={{ marginTop: 10, marginBottom: 40 }}>
-          <Text style={{ marginTop: 10, fontSize: 23, fontWeight: 'bold' }}>
+        <View>
+          <Text
+            style={{
+              marginTop: 10,
+              fontSize: 23,
+              fontWeight: 'bold',
+              marginHorizontal: 20
+            }}>
             Actores
           </Text>
-          <CastItem actor={cast[0]} />
+          <FlatList
+            data={cast}
+            keyExtractor={({ id }) => id.toString()}
+            renderItem={({ item }) => <CastItem actor={item} />}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ marginBottom: 20, height: 70 }}
+          />
         </View>
       </View>
     </>

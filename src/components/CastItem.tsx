@@ -9,14 +9,18 @@ interface Props {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    height: 50,
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     borderRadius: 10,
-    elevation: 5,
-    backgroundColor: 'white'
+    elevation: 9,
+    backgroundColor: 'white',
+    marginRight: 30,
+    marginLeft: 20
   },
   actorInfo: {
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 4
   }
 });
 
@@ -25,13 +29,15 @@ const CastItem = ({ actor }: Props) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={{ width: 50, height: 50, borderRadius: 5 }}
-        source={{ uri }}
-      />
+      {actor.profile_path && (
+        <Image
+          style={{ width: 50, height: 50, borderRadius: 5 }}
+          source={{ uri }}
+        />
+      )}
       <View style={styles.actorInfo}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{actor.name}</Text>
-        <Text style={{ fontSize: 16, opacity: 0.8 }}>{actor.character}</Text>
+        <Text style={{ fontSize: 14, opacity: 0.8 }}>{actor.character}</Text>
       </View>
     </View>
   );
