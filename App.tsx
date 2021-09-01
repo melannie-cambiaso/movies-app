@@ -10,12 +10,19 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+import { GradientProvider } from './src/context/GradientContext';
 import Navigation from './src/navigation/Navigation';
+
+const AppState = ({ children }: any) => (
+  <GradientProvider>{children}</GradientProvider>
+);
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Navigation />
+      <AppState>
+        <Navigation />
+      </AppState>
     </NavigationContainer>
   );
 };
